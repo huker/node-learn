@@ -16,5 +16,10 @@ var server=http.createServer(function(request,response){
     //response.end('<html><head><meta charset="UTF-8"></head><body><h2>你好a年爱啊年爱</h2></body></html>');
 });
 
-//监听的端口
+//监听的端口 一个程序监听一个端口
 server.listen(8080);
+
+//另一种写法
+//http.createServer(function(request,response){
+//
+//}).listen(8080);
