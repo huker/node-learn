@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form name="userform">
+    <input type="text" name="username"/>
+    <input type="text" name="password"/>
+    <input type="file" name="avatar" multiple/>
+    <input type="button" id="regBtn" value="注册">
+</form>
+</body>
+<script>
+    function serialize(form){
+        var elements=Array.prototype.splice.call(form.elements);
+        var data=[];
+        elements.forEach(function(element){
+            var type=element.type;
+            switch (type){
+                case 'submit':
+                case 'cancel':
+                case 'reset':
+                    break;
+                case 'text':
+                    data.push(element.name+'='+element.value);
+            }
+        })
+    }
+</script>
+</html>

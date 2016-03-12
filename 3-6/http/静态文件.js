@@ -5,6 +5,10 @@ var http=require('http');
 var fs=require('fs');
 
 var server=http.createServer(function(request,response){
+    //fs.readFile('./index.html','utf8', function (err,data) {
+    //    response.write(data);
+    //    response.end();
+    //});
     var url = request.url;
     if(url == '/index.html'){
         //指定文件的路径 设置编码 得到data就是字符串类型的
@@ -20,5 +24,4 @@ var server=http.createServer(function(request,response){
             response.end();
         })
     }
-});
-server.listen(8080);
+}).listen(8002);

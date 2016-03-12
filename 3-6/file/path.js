@@ -17,6 +17,7 @@ console.log(path.basename('7.path.js','.js'));
 console.log(path.extname('path.js'));
 //从一个相对路径解析出一个绝对路径
 //以应用程序的所在目录为根
+console.log(path.resolve());
 console.log(path.resolve('test','1.js'));
 //回到上一级
 console.log(path.resolve('test','1.js','..','package.json'));

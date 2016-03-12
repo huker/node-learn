@@ -5,6 +5,7 @@ var http=require('http');
 var server=http.createServer(function(request,response){
     var data=new Date();
     response.setHeader('Content-Type','text/html;charset=utf-8');
+    // 向客户端发送响应
     response.write(data.toString());
     response.end();
 });

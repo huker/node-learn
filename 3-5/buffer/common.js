@@ -4,7 +4,7 @@ var buffer3=new Buffer('世');
 var buffer4=new Buffer('界');
 //大部分数组的方法都能使用
 var all=Buffer.concat([buffer1,buffer2,buffer3,buffer4],12);
-var s=all.slice(9,12).toString();;
+var s=all.slice(9,12).toString();
 console.log(s);
 //console.log(all);
 var buffers=new Buffer(12);
