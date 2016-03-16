@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="clock"></div>
+</body>
+<script>
+    window.onload=function(){
+        setInterval(function () {
+//            1.创建一个ajax对象
+            var xhr=new XMLHttpRequest();
+//            2.打开请求 指定参数 method url async user password
+            xhr.open('GET','/clock',true);
+//            3.指定接收响应的回调函数 每改变一次执行一次
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    document.querySelector('#clock').innerHTML=xhr.responseText;
+                }else{
+                    console.log(xhr.statusText);
+                }
+            };
+            xhr.send();
+        },1000);
+    }
+</script>
+</html>

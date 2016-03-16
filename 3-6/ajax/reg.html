@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+用户名：<input type="text" name="username"/><br>
+年龄：<input type="text" name="age"/>
+<input type="button" onclick="sub()" value="注册"/>
+<table>
+    <tbody>
+        <tr>
+            <td>username</td>
+            <td>age</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+<script>
+        function sub(){
+            var username = document.querySelector("input[name='username']").value;
+            var age  =document.querySelector("input[name='age']").value;
+            var user={
+                username:username,
+                age:age
+            };
+            var xhr=new XMLHttpRequest();
+            xhr.open('POST','/reg',true);
+            //设置响应的类型
+            xhr.responseType='json';
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    var user=xhr.response;
+                    var tbody=document.querySelector("table tbody");
+                    var tr=document.createElement('tr');
+                    tbody.appendChild(tr);
+                    var td1=document.createElement('td');
+                    td1.innerHTML=user.username;
+                    tbody.appendChild(td1);
+                    var td2=document.createElement('td');
+                    td2.innerHTML=user.age;
+                    tbody.appendChild(td2);
+                }
+            };
+            //请求体发送的数据
+            xhr.send(JSON.stringify(user));
+        }
+</script>
+</html>
