@@ -9,13 +9,17 @@
 
 </ul>
 <script>
-    //1.创建个script元素
+    function show(data){
+        console.log(data);
+        data.forEach(function(msg){
+            var li=document.createElement('li');
+            li.innerHTML=msg;
+            document.querySelector('#content').appendChild(li);
+        });
+    }
     var script=document.createElement('script');
-    script.src='';
-    document.appendChild(script);
-
-
-
+    script.src='http://localhost:8004/books?callback=show&name=zhangsan&age=12';
+    document.body.appendChild(script);
 </script>
 </body>
 </html>

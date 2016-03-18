@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form name="userform" method="post">
+    用户名<input type="text" name="username"><br/>
+    密码<input type="text" name="password">
+    <input type="button" id="regBtn" value="注册"/>
+</form>
+</body>
+<script>
+    function serialize(form){
+        //把取到的集合转成数组
+        var elements=Array.prototype.slice.call(form.elements);
+        var data=[];
+        elements.forEach(function(element){
+            var type=element.type;
+            switch (type){
+                case 'text':
+                    data.push(element.name+'='+element.value);
+//                    console.log(data)
+            }
+        });
+        return data.join("&");
+    }
+    window.onload= function () {
+      document.querySelector('#regBtn').addEventListener('click',function(){
+          var xhr=new XMLHttpRequest();
+          xhr.open('POST','/reg',true); //请求方法！ 地址！
+          xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+          xhr.responseType='text';//不设置的话
+          xhr.onreadystatechange= function () {
+              if(xhr.readyState==4 && /2\d{2}/.test(xhr.status)){
+                  console.log(xhr.responseText);
+              }
+          };
+//          把表单的值转成查询字符串
+          var data=serialize(document.querySelector("form"));
+//          把数据放在请求里面发送给服务器
+          xhr.send(data);
+      })
+    };
+</script>
+</html>

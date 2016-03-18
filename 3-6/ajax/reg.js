@@ -23,6 +23,7 @@ var server=http.createServer(function(req,res){
         req.on('end',function(){
             console.log(str);
             //users.push(JSON.parse(str));
+            //str就是单个一次输入的{"username":"XXX","age":"XXX"}
             res.end(str)
         })
     }

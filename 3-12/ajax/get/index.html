@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="content"></div>
+</body>
+<script>
+    var xhr=new XMLHttpRequest();
+    xhr.open('GET','books.json',true);
+    xhr.responseType='json';//不设置的话
+    xhr.onreadystatechange= function () {
+        if(xhr.readyState==4 && /2\d{2}/.test(xhr.status)){
+//            console.log(xhr.getAllResponseHeaders());
+//            console.log(xhr.getResponseHeader('Content-Type'));
+//            console.log(xhr.responseText); 只有text的时候读取的到 json不行
+            console.log(xhr.response);
+
+        }
+    };
+    xhr.send();
+</script>
+</html>
