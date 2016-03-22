@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>跨域资源共享</title>
+</head>
+<body>
+<script>
+    var xhr=new XMLHttpRequest();
+//    直接预览是通过webstorm设置的端口访问的 但是我们请求访问的是8080端口 就跨域了
+    xhr.open('POST','/reg',true);
+//   设置response是个json
+    xhr.responseType='json';
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4&&xhr.status==200){
+            console.log(xhr.response)
+        }
+    };
+    xhr.send(JSON.stringify({"name":"hu"}));
+</script>
+</body>
+</html>
