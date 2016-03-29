@@ -1,9 +1,10 @@
+//restful是种规矩 规范
 var express=require('express');
 var app=express();
 var path=require('path');
 var bodyparser=require('body-parser');
 //存放所有用户
-var users=[{id:1,name:'hu'},{id:2,name:'liu'}];
+var users=[{id:1,name:'hu',mny:100},{id:2,name:'liu',mny:100}];
 //指定渲染引擎
 app.set('view engine','ejs');
 //设置渲染模板的目录
@@ -97,6 +98,7 @@ app.put('/users/:id',function(req,res){
 //curl -X PATCH --data "name=haha200" http://localhost:8080/users/2
 app.patch('/users/:id',function(req,res){
     var updatedFields=req.body;
+    console.log(typeof req.body);
     if(updatedFields){
         for(var i=0;i<users.length;i++){
             //请求体的内容没有id 只能用路径参数里面的
@@ -116,4 +118,26 @@ app.patch('/users/:id',function(req,res){
     }
 });
 
+//删除一个资源
+//curl -X DELETE http://localhost:8080/users/2
+app.delete('/users/:id',function(req,res){
+    //for(var i=0;i<users.length;i++){
+    //    if(users[i].id==req.params.id){
+    //        users.splice(i,1);
+    //        res.send({});
+    //        return;
+    //    }
+    //}
+    users=users.filter(function(user){
+        return user.id!=req.params.id;
+    });
+    //res.send({msg:'删除失败'})
+});
+
+//把id1的钱给id2
+//app.post('/transfer/1/to/2',function(){}); //这样是不对的 url里面不能动词
+//restful是以资源为中心 不是以动作为中心
+app.post('/transaction/:fromId/:toId',function(){
+    var money=req.body.money;
+});
 app.listen(8080);
