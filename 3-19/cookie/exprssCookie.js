@@ -12,9 +12,9 @@ app.get('/',function(req,res){
     //默认
     res.cookie('name','hu');
     //设置域名
-    res.cookie('name','hu',{
-        domain:'a.zfpx.cn'  //.zfpx.cn 的话前面是什么都能匹配
-    })
+    //res.cookie('name','hu',{
+    //    domain:'a.zfpx.cn'  //.zfpx.cn 的话前面是什么都能匹配
+    //})
 
 });
 

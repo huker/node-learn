@@ -9,7 +9,7 @@ app.set('view engine','ejs');
 app.set('views',path.resolve());
 
 function checkLogin(req,res,next){
-    if(req.cookies.username&&req.cookieshnjmuy){
+    if(req.cookies.username&&req.cookies){
         next();
     }else{
         res.redirect('/');
